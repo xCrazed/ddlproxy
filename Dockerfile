@@ -4,12 +4,15 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
     build-essential \
+    git \
     curl \
     libcurl4-openssl-dev \
     libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install flask m3u8 curl-cffi gunicorn
+RUN git clone https://github.com/pigzillaaaaa/daddylive .
+
+RUN pip install flask curl-cffi m3u8 gunicorn
 
 EXPOSE 7860
 
